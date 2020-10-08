@@ -4,12 +4,18 @@ import {
   View,
   Text,
   FlatList,
+  TouchableOpacity
 } from 'react-native';
+
+import { connect } from 'react-redux';
+
 import ListTile from './Components/ListTile';
 
 import style from './Home.style';
 
-const Home = () => {
+import { UserActions } from '../Modules/User/User.actions';
+
+const Home = (props) => {
   const keyExtractor = useCallback(item => item.id, []);
   const getItemLayout = useCallback(
     (_, index) => {
@@ -24,26 +30,31 @@ const Home = () => {
   return (
     <View style={style.container}>
       <Text style={style.title}>Reminders</Text>
-      <FlatList
-        keyExtractor={keyExtractor}
-        data={
-          [
-            {
-              id: "1",
-              content: "Hello",
-            },
-            {
-              id: "2",
-              content: "Hello",
-            },
-          ]
-        }
-        getItemLayout={getItemLayout}
-        renderItem={ListTile}
-        windowSize={6}
-      />
+      <TouchableOpacity onPress={props.testAction}>
+        <FlatList
+          keyExtractor={keyExtractor}
+          data={
+            [
+              {
+                id: "1",
+                content: "Hello",
+              },
+              {
+                id: "2",
+                content: "Hello",
+              },
+            ]
+          }
+          getItemLayout={getItemLayout}
+          renderItem={ListTile}
+          windowSize={6}
+        />
+      </TouchableOpacity>
     </View>
   )
 }
 
-export default Home;
+export default connect(
+  null,
+  UserActions,
+)(Home);
