@@ -1,24 +1,35 @@
 
 import React from 'react';
-
-import { AppRegistry } from 'react-native';
 import Home from './src/Home/Home.screen'
-import { name as appName } from './app.json';
 import { Provider } from 'react-redux';
-
+import { Navigation } from "react-native-navigation";
 import configureStore from './src/Store/';
 
 const store = configureStore();
 
-AppRegistry.registerComponent(appName, () => {
-    return () => {
-        return (
-            <Provider store={store}>
-                <Home />
-            </Provider>
-        )
+Navigation.registerComponent(
+  'com.myApp.HomeScreen',
+  () => {
+    return () => (
+      <Provider store={store}>
+        <Home />
+      </Provider>
+    );
+  },
+);
+
+Navigation.events().registerAppLaunchedListener(() => {
+  Navigation.setRoot({
+    root: {
+      stack: {
+        children: [
+          {
+            component: {
+              name: 'com.myApp.HomeScreen'
+            }
+          }
+        ]
+      }
     }
-
-
-
+  });
 });
