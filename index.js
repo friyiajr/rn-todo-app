@@ -18,22 +18,19 @@ Navigation.registerComponent(
   () => Home
 );
 
-// return () => {
-//   return (
-//     <Provider store={store}>
-//       <Home />
-//     </Provider>
-//   )
-// }
-
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
       stack: {
+        options: {
+          topBar: {
+            visible: false,
+          }
+        },
         children: [
           {
             component: {
-              name: 'com.myApp.HomeScreen'
+              name: 'com.myApp.HomeScreen',
             }
           }
         ]
