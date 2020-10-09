@@ -13,10 +13,11 @@ import ListTile from './Components/ListTile';
 
 import style from './Home.style';
 
-import { UserActions } from '../Modules/User/User.actions';
+import { actions } from './Home.actions';
 
 const Home = (props) => {
   const keyExtractor = useCallback(item => item.id, []);
+
   const getItemLayout = useCallback(
     (_, index) => {
       const ITEM_HEIGHT = 75;
@@ -27,10 +28,14 @@ const Home = (props) => {
       }
     }, [])
 
+  const navigateToCreateTodoScreen = () => {
+    console.log(props)
+  }
+
   return (
     <View style={style.container}>
       <Text style={style.title}>Reminders</Text>
-      <TouchableOpacity onPress={props.testAction}>
+      <TouchableOpacity onPress={navigateToCreateTodoScreen.bind(this)}>
         <FlatList
           keyExtractor={keyExtractor}
           data={
@@ -56,5 +61,5 @@ const Home = (props) => {
 
 export default connect(
   null,
-  UserActions,
+  actions,
 )(Home);

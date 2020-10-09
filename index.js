@@ -4,7 +4,6 @@ import Home from './src/Home/Home.screen'
 import { Provider } from 'react-redux';
 import { Navigation } from "react-native-navigation";
 import configureStore from './src/Store/';
-import { prop } from 'ramda';
 
 const store = configureStore();
 
