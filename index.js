@@ -1,9 +1,12 @@
 
 import React from 'react';
-import Home from './src/Home/Home.screen'
+
 import { Provider } from 'react-redux';
 import { Navigation } from "react-native-navigation";
 import configureStore from './src/Store/';
+
+import Home from './src/Home/Home.screen'
+import CreateTodoScreen from './src/Screens/CreateTodo/CreateTodo.screen';
 
 const store = configureStore();
 
@@ -17,6 +20,16 @@ Navigation.registerComponent(
   () => Home
 );
 
+Navigation.registerComponent(
+  'com.myApp.CreateTodoScreen',
+  () => props => (
+    <Provider store={store}>
+      <CreateTodoScreen {...props} />
+    </Provider>
+  ),
+  () => CreateTodoScreen,
+)
+
 Navigation.events().registerAppLaunchedListener(() => {
   Navigation.setRoot({
     root: {
@@ -29,7 +42,7 @@ Navigation.events().registerAppLaunchedListener(() => {
         children: [
           {
             component: {
-              name: 'com.myApp.HomeScreen',
+              name: 'com.myApp.CreateTodoScreen',
             }
           }
         ]
