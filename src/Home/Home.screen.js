@@ -29,7 +29,10 @@ const Home = (props) => {
     }, [])
 
   const navigateToCreateTodoScreen = () => {
-    console.log(props)
+    props.pushScreen({
+      componentId: props.componentId,
+      targetScreen: 'com.myApp.CreateTodoScreen'
+    });
   }
 
   return (

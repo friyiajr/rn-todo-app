@@ -42,7 +42,7 @@ Navigation.events().registerAppLaunchedListener(() => {
         children: [
           {
             component: {
-              name: 'com.myApp.CreateTodoScreen',
+              name: 'com.myApp.HomeScreen',
             }
           }
         ]
