@@ -10,12 +10,13 @@ import {
 
 import { connect } from 'react-redux';
 
-import { UserActions } from '../../Modules/User/User.actions'
+import { actions } from '../CreateTodo/CreateTodo.actions'
 
 import style from './CreateTodo.style';
 
 const CreateTodoScreen = (props) => {
   const [todoContent, setTodoContent] = useState('');
+  console.log(props);
   return (
     <KeyboardAvoidingView
       behavior='height'
@@ -27,7 +28,7 @@ const CreateTodoScreen = (props) => {
         onChangeText={setTodoContent}
         value={todoContent}
         style={style.textInput} />
-      <TouchableOpacity onPress={props.testAction}>
+      <TouchableOpacity onPress={() => props.popScreen({ componentId: props.componentId })}>
         <View style={style.submitButton}>
           <Text style={style.submitButtonText}>Done</Text>
         </View>
@@ -38,5 +39,5 @@ const CreateTodoScreen = (props) => {
 
 export default connect(
   null,
-  UserActions
+  actions,
 )(CreateTodoScreen);
