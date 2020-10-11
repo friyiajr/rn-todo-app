@@ -16,7 +16,6 @@ import style from './CreateTodo.style';
 
 const CreateTodoScreen = (props) => {
   const [todoContent, setTodoContent] = useState('');
-
   return (
     <KeyboardAvoidingView
       behavior='height'
