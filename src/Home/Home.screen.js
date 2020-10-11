@@ -1,19 +1,17 @@
 import React, { useCallback } from 'react';
-
 import {
   View,
   Text,
   FlatList,
-  TouchableOpacity
 } from 'react-native';
-
 import { connect } from 'react-redux';
 
-import ListTile from './Components/ListTile';
-
 import style from './Home.style';
+import ListTile from './Components/ListTile';
+import CreateTodoButton from './Components/CreateTodoButton';
 
 import { actions } from './Home.actions';
+import { selector } from './Home.selectors';
 
 const Home = (props) => {
   const keyExtractor = useCallback(item => item.id, []);
@@ -37,32 +35,24 @@ const Home = (props) => {
 
   return (
     <View style={style.container}>
-      <Text style={style.title}>Reminders</Text>
-      <TouchableOpacity onPress={navigateToCreateTodoScreen.bind(this)}>
+      <View>
+        <Text style={style.title}>Reminders</Text>
         <FlatList
           keyExtractor={keyExtractor}
-          data={
-            [
-              {
-                id: "1",
-                content: "Hello",
-              },
-              {
-                id: "2",
-                content: "Hello",
-              },
-            ]
-          }
+          data={props.allTodos}
           getItemLayout={getItemLayout}
           renderItem={ListTile}
           windowSize={6}
         />
-      </TouchableOpacity>
+      </View>
+      <CreateTodoButton
+        onPress={navigateToCreateTodoScreen.bind(this)}
+      />
     </View>
   )
 }
 
 export default connect(
-  null,
+  selector,
   actions,
 )(Home);
