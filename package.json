@@ -10,14 +10,15 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "jetifier": "^1.6.6",
     "ramda": "^0.27.1",
     "react": "16.13.1",
     "react-native": "0.63.3",
     "react-native-navigation": "^7.1.0",
-    "react-native-vector-icons": "^7.1.0",
     "react-redux": "^7.2.1",
     "redux": "^4.0.5",
     "redux-logger": "^3.0.6",
+    "redux-saga": "^1.1.3",
     "reselect": "^4.0.0"
   },
   "devDependencies": {

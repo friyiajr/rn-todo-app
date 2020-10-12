@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import {
+  SafeAreaView,
   View,
   Text,
   FlatList,
@@ -34,7 +35,7 @@ const Home = (props) => {
   }
 
   return (
-    <View style={style.container}>
+    <SafeAreaView style={style.container}>
       <View>
         <Text style={style.title}>Reminders</Text>
         <FlatList
@@ -48,7 +49,7 @@ const Home = (props) => {
       <CreateTodoButton
         onPress={navigateToCreateTodoScreen.bind(this)}
       />
-    </View>
+    </SafeAreaView>
   )
 }
 

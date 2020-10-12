@@ -1,28 +1,53 @@
-import { propOr } from 'ramda';
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
   View,
   Text,
+  TextInput,
+  SafeAreaView,
   TouchableOpacity,
+  KeyboardAvoidingView,
 } from 'react-native'
 
 import { connect } from 'react-redux';
 
-import { UserActions } from '../../Modules/User/User.actions'
+import { actions } from '../CreateTodo/CreateTodo.actions'
+
+import style from './CreateTodo.style';
 
 const CreateTodoScreen = (props) => {
-  console.log(props);
+  const [todoContent, setTodoContent] = useState('');
+
+  const createTodo = () => {
+    props.createTodo({
+      content: todoContent,
+      componentId: props.componentId
+    });
+  }
+
   return (
-    <View>
-      <TouchableOpacity onPress={props.testAction}>
-        <Text>Hello World 2</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView
+      behavior='height'
+      enabled={true}
+      style={style.container}>
+      <TextInput
+        multiline={true}
+        numberOfLines={99}
+        onChangeText={setTodoContent}
+        value={todoContent}
+        style={style.textInput} />
+      <SafeAreaView>
+        <TouchableOpacity onPress={createTodo.bind(this)}>
+          <View style={style.submitButton}>
+            <Text style={style.submitButtonText}>Done</Text>
+          </View>
+        </TouchableOpacity>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   )
 }
 
 export default connect(
   null,
-  UserActions
+  actions,
 )(CreateTodoScreen);
