@@ -6,7 +6,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import Colors from '../../Helpers/colors'
+import Colors from '../../../Helpers/colors'
 
 const ListTile = ({ item }) => {
   return (
