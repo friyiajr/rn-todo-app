@@ -9,6 +9,8 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+import LoginTextInput from './Components/TextInput';
+
 import style from './Login.style';
 
 const Login = (props) => {
@@ -16,18 +18,26 @@ const Login = (props) => {
   const [password, setPassword] = useState(null);
   return (
     <SafeAreaView style={style.container}>
-      <Text style={style.titleText}>Simple Todo</Text>
-      <TextInput
-        value={email}
-        onChangeText={setEmail}
-      />
-      <TextInput
-        value={password}
-        onChangeText={setPassword}
-      />
-      <TouchableWithoutFeedback>
-        <Text>Login</Text>
-      </TouchableWithoutFeedback>
+      <View style={style.mainContent}>
+        <View style={style.titleArea}>
+          <Text style={style.titleText}>Simple Todo</Text>
+        </View>
+        <View style={style.textArea}>
+          <LoginTextInput
+            value={email}
+            onChangeText={setEmail}
+            placeholder="Login" />
+          <LoginTextInput
+            value={password}
+            onChangeText={setPassword}
+            placeholder="Password" />
+        </View>
+        <TouchableWithoutFeedback>
+          <View style={style.loginButton}>
+            <Text>Login</Text>
+          </View>
+        </TouchableWithoutFeedback>
+      </View>
     </SafeAreaView>
   );
 }
