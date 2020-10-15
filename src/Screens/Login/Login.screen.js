@@ -11,11 +11,18 @@ import {
 
 import LoginTextInput from './Components/TextInput';
 
+import { actions } from './Login.actions';
+
 import style from './Login.style';
 
 const Login = (props) => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+
+  const login = () => {
+    props.attemptLogin({ email, password });
+  };
+
   return (
     <SafeAreaView style={style.container}>
       <View style={style.mainContent}>
@@ -32,7 +39,7 @@ const Login = (props) => {
             onChangeText={setPassword}
             placeholder="Password" />
         </View>
-        <TouchableWithoutFeedback>
+        <TouchableWithoutFeedback onPress={login.bind(this)}>
           <View style={style.loginButton}>
             <Text>Login</Text>
           </View>
@@ -44,6 +51,6 @@ const Login = (props) => {
 
 export default connect(
   null,
-  null,
+  actions,
 )(Login)
 

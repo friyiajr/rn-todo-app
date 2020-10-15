@@ -2,8 +2,7 @@ import { UserActionConstants } from './User.actions';
 
 export default function reducer(state = {}, action = {}) {
   switch (action.type) {
-    case UserActionConstants.TEST_ACTION:
-      console.log("Hello");
+    case UserActionConstants.ATTEMPT_LOGIN:
       return state;
     default:
       return state;

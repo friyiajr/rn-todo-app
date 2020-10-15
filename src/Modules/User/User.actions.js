@@ -1,9 +1,9 @@
 import createAction from '../../Helpers/actions'
 
 export const UserActionConstants = {
-    TEST_ACTION: "@@USER/TEST_ACTION",
+  ATTEMPT_LOGIN: "@@USER/ATTEMPT_LOGIN",
 }
 
-export const UserActions = {
-    testAction: () => createAction(UserActionConstants.TEST_ACTION)
+export const UserActionsCreators = {
+  attemptLogin: (props) => createAction(UserActionConstants.ATTEMPT_LOGIN, props)
 }
